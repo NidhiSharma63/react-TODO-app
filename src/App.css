@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
 body{
     margin: 0;
-    padding: 0;
     background-color: #067969;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+
 }
 html{
     font-size: 62.5%;
@@ -39,6 +40,11 @@ input{
 .btn:hover{
     background: white;
     color: #067969;
+}
+input::placeholder{
+    color: white;
+    letter-spacing: .1rem;
+    
 }
 /* .App{
     padding: 0;
