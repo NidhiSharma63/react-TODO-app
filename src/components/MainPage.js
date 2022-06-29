@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 import useStore from '../store';
+import AddTask from './AddTask';
+
 
 const Container = styled.div`
   width: 80%;
@@ -29,26 +31,37 @@ const Col1 = styled.div`
 export default function MainPage() {
   const name = useStore(state => state.userName);
   const task = useStore(state => state.task);
-
+  const isAddedTrue = useStore(state => state.IsAddedTrue);
+  const isAddeValue = useStore(state => state.isAddeValue);
+  console.log(isAddeValue);
   const HaveNoTask = () => {
       return(
         <Col1 className='common-flex'>
         <h1 style={{fontSize:'3rem',marginBottom:'3rem'}}>you haven't added any task yet</h1>
-        <button className='btn'>Add Task</button>
+        <button className='btn' onClick={()=>isAddedTrue()}>Add Task</button>
       </Col1>
       )
   }
 
   return (
     <Container className='common-flex'>
-      <H1>what's up, {name}!</H1>
       {
-        task.length==0?<HaveNoTask/>:
-        task.map((item,index)=>{
-          console.log('item',item);
-        })
+        !isAddeValue?
+        <>
+        <H1>what's up, {name}!</H1>
+        {
+          task.length==0?<HaveNoTask/>:
+          task.map((item,index)=>{
+            // console.log('item',item);
+          })
+        }
+        <div></div>
+        </>
+        :
+        <AddTask />
+
       }
-      <div></div>
+      
 
     </Container>
   )

@@ -13,7 +13,6 @@ const MainContainer = styled.div`
 
 function App() {
   const name = useStore(state => state.userName);
-  console.log(name);
   return (
       <MainContainer>
         {
