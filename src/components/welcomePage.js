@@ -35,17 +35,25 @@ const Input = styled.input`
   font-size: 2rem;
   padding: .5rem;
 `
+const Col2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 
 function WelcomePage() {
   return (
    <>
      <Container>
         <div style={{marginBottom:'2rem'}}><h1 style={{fontSize:'7rem',letterSpacing:'.5rem'}}>hey! welcome <span style={{fontSize:'4rem'}}>😃</span></h1></div>
-        <div >
+        <Col2 >
           <p style={{fontSize:'5rem',marginBottom:'2rem'}}>please enter your name <span style={{fontSize:'3rem'}}>🖊️</span></p>
-          <Input type="text" name="" id="" placeholder='your name...' />
-          <button className='btn'>submit</button>
-        </div>
+          <div>
+            <Input type="text" name="" id="" placeholder='your name...' />
+            <button className='btn'>submit</button>
+          </div>
+        </Col2>
       </Container>
       <GlassEffect>
       </GlassEffect>
