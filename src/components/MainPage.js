@@ -23,6 +23,7 @@ const Col1 = styled.div`
   padding:3rem;
   width: 80%;
   border-radius: .6rem;
+  letter-spacing: .2rem;
 `
 
 export default function MainPage() {
@@ -32,7 +33,7 @@ export default function MainPage() {
   const HaveNoTask = () => {
       return(
         <Col1 className='common-flex'>
-        <h1 style={{fontSize:'3rem',marginBottom:'3rem'}}>You have no task</h1>
+        <h1 style={{fontSize:'3rem',marginBottom:'3rem'}}>you haven't added any task yet</h1>
         <button className='btn'>Add Task</button>
       </Col1>
       )
