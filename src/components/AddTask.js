@@ -40,7 +40,6 @@ const Button = styled.button`
   margin-top: 2rem;
 `;
 
-
 function AddTask() {
   const isAddTaskValue = useStore(state => state.isAddTaskValue);
   const task = useStore(state => state.task);
@@ -64,8 +63,9 @@ function AddTask() {
     e.preventDefault();
     const {title,Desc,setDate} = formData;
     IsAddedFalse(false);
-
-    setTask({title,Desc,setDate});
+    if(title && Desc){
+      setTask({title,Desc,setDate});
+    }
     console.log(task)
   }
 
@@ -99,10 +99,10 @@ function AddTask() {
         id="" 
         onChange={handleChange}
         value={formData.setDate}/>
-        <Button 
+        <button 
         type="submit"
-        className='btn AddTask'>
-        Add</Button>
+        className='btn1 btn2'>
+        Add</button>
       </Form>
     </FromDiv>
   )

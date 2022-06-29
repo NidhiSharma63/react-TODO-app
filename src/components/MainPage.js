@@ -2,6 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 import useStore from '../store';
 import AddTask from './AddTask';
+import {AiOutlineDelete} from 'react-icons/ai';
+import {AiOutlineEdit} from 'react-icons/ai';
 
 
 const Container = styled.div`
@@ -27,24 +29,38 @@ const Col1 = styled.div`
   border-radius: .6rem;
   letter-spacing: .2rem;
 `
-const Button = styled.button`
+const Task = styled.div`
+  border: 1px solid;
+  padding: 1rem 2rem;
+  background: #067969;
+  color: white;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+`
+const Title = styled.div`
+  display: flex;
+`
+const Span = styled.span`
   font-size: 2.3rem;
-  background-color: #067969;
-  margin-left: 0rem;
-  margin-top: 2rem;
-`;
-
+  margin-left: 8rem;
+  margin-right: 1.2rem;
+  cursor: pointer;
+`
+const Span2 = styled.span`
+  font-size: 2.3rem;
+  cursor: pointer;
+`
 export default function MainPage() {
   const name = useStore(state => state.userName);
   const task = useStore(state => state.task);
   const isAddedTrue = useStore(state => state.IsAddedTrue);
   const isAddTaskValue = useStore(state => state.isAddTaskValue);
-  console.log(task.length);
+  // console.log(task.length);
   const HaveNoTask = () => {
       return(
         <Col1 className='common-flex'>
         <h1 style={{fontSize:'3rem',marginBottom:'3rem'}}>you haven't added any task yet</h1>
-        <button className='btn' onClick={()=>isAddedTrue()}>Add Task</button>
+        <button className='btn1' onClick={()=>isAddedTrue()}>Add Task</button>
       </Col1>
       )
   }
@@ -59,15 +75,16 @@ export default function MainPage() {
           task.length==0?<HaveNoTask/>:
           task.map((item,index)=>{
             return(
-              <div key={index}>
-                <h1>{item.title}</h1>
-                <p>{item.Desc}</p>
-                <p>{item.setDate}</p>
-              </div>
+              <Task key={index}>
+                <Title className="title"><h1>{item.title}</h1> <Span><AiOutlineDelete/></Span><Span2><AiOutlineEdit/></Span2></Title>
+                <p style={{marginTop:'2rem'}}>{item.Desc}</p>
+                <p style={{marginTop:'2rem'}}>{item.setDate}</p>
+              </Task>
             )
           })
         }
-        <Button className='btn' onClick={()=>isAddedTrue()}>Add Task</Button>
+        {task.length!=0 && <button className='btn1 btn2' onClick={()=>isAddedTrue()}>Add Task</button>}
+        
         <div></div>
         </>
         :

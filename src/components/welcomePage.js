@@ -49,7 +49,7 @@ function WelcomePage() {
             placeholder='your name...' 
             onChange={(e)=>{setName(e.target.value)}}/>
             <button 
-            className='btn' 
+            className='btn1' 
             style={{marginLeft:'5rem'}}
             onClick={()=>setUserName(name)}>submit</button>
           </div>
