@@ -29,11 +29,12 @@ const GlassEffect = styled.div`
 const Input = styled.input`
   border:none;
   height: 4rem;
-  width: 25rem;
-  border-radius:.4rem;
   outline: none;
   font-size: 2rem;
-  padding: .5rem;
+  padding-left: 1rem;
+  background: transparent;
+  color:white;
+  border-bottom:.5px solid white;
 `
 const Col2 = styled.div`
   display: flex;
@@ -48,10 +49,10 @@ function WelcomePage() {
      <Container>
         <div style={{marginBottom:'2rem'}}><h1 style={{fontSize:'7rem',letterSpacing:'.5rem'}}>hey! welcome <span style={{fontSize:'4rem'}}>😃</span></h1></div>
         <Col2 >
-          <p style={{fontSize:'5rem',marginBottom:'2rem'}}>please enter your name <span style={{fontSize:'3rem'}}>🖊️</span></p>
+          <p style={{fontSize:'5rem',marginBottom:'4rem'}}>please enter your name <span style={{fontSize:'3rem'}}>🖊️</span></p>
           <div>
             <Input type="text" name="" id="" placeholder='your name...' />
-            <button className='btn'>submit</button>
+            <button className='btn' style={{marginLeft:'5rem'}}>submit</button>
           </div>
         </Col2>
       </Container>
