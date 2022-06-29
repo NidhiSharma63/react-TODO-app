@@ -35,16 +35,40 @@ input{
     border:.3rem solid white;
     border-radius: .5rem;
     color: white;
-    transition: .4s;
+    transition: .2s;
 }
 .btn:hover{
     background: white;
     color: #067969;
 }
-input::placeholder{
+
+.AddTask:hover{
+    border: .3rem solid #067969;
+}
+.input{
+    border:none;
+    height: 4rem;
+    outline: none;
+    font-size: 2.5rem;
+    padding-left: .5rem;
+    background: transparent;
+    letter-spacing: .3rem;
+}
+.input::placeholder{
     color: white;
     letter-spacing: .1rem;
     
+}
+#title::placeholder{
+    color: #067969;
+    letter-spacing: .1rem;
+}
+textarea::placeholder{
+    color: #067969;
+    letter-spacing: .1rem;
+}
+textarea:focus{
+    outline: 1px solid #067969;
 }
 .common-flex{
     display: flex;
@@ -52,11 +76,4 @@ input::placeholder{
     justify-content: center;
     flex-direction: column;
 }
-/* .App{
-    padding: 0;
-    margin: 0;
-} */
 
-/* .glass{
-    background-color: #d7d7e611;
-} */

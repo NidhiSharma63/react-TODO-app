@@ -32,8 +32,7 @@ export default function MainPage() {
   const name = useStore(state => state.userName);
   const task = useStore(state => state.task);
   const isAddedTrue = useStore(state => state.IsAddedTrue);
-  const isAddeValue = useStore(state => state.isAddeValue);
-  console.log(isAddeValue);
+  const isAddTaskValue = useStore(state => state.isAddTaskValue);
   const HaveNoTask = () => {
       return(
         <Col1 className='common-flex'>
@@ -46,7 +45,7 @@ export default function MainPage() {
   return (
     <Container className='common-flex'>
       {
-        !isAddeValue?
+        !isAddTaskValue?
         <>
         <H1>what's up, {name}!</H1>
         {

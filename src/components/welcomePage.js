@@ -22,12 +22,6 @@ const GlassEffect = styled.div`
   background-color: #d7d7e611;
 `;
 const Input = styled.input`
-  border:none;
-  height: 4rem;
-  outline: none;
-  font-size: 2.5rem;
-  padding-left: .5rem;
-  background: transparent;
   color:white;
   border-bottom:.5px solid white;
   letter-spacing: .3rem;
@@ -50,7 +44,8 @@ function WelcomePage() {
           <div>
             <Input 
             type="text" 
-            name="" id="" 
+            name="" 
+            className="input" 
             placeholder='your name...' 
             onChange={(e)=>{setName(e.target.value)}}/>
             <button 
