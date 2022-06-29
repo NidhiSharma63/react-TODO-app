@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import styled from "styled-components";
+import WelcomePage from './components/welcomePage';
+
+// change the min width to max width
+const MainContainer = styled.div`
+  
+  min-width: 1440px;
+  position: relative;
+  height: 90vh;
+  // margin: auto;
+`
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MainContainer className="main-container">
+        <WelcomePage />
+      </MainContainer>
+
     </div>
   );
 }
