@@ -9,10 +9,6 @@ const Container = styled.div`
   height: 100%;
   z-index: 1;
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 `;
 
 const GlassEffect = styled.div`
@@ -36,12 +32,6 @@ const Input = styled.input`
   border-bottom:.5px solid white;
   letter-spacing: .3rem;
 `
-const Col2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
 const H1 = styled.h1`
   font-size: 7rem;
   letter-spacing: .5rem;
@@ -53,9 +43,9 @@ function WelcomePage() {
 
   return (
    <>
-     <Container>
+     <Container className='common-flex'>
         <div style={{marginBottom:'2rem'}}><H1>hey! welcome <span style={{fontSize:'4rem'}}>😃</span></H1></div>
-        <Col2 >
+        <div className='common-flex'>
           <p style={{fontSize:'5rem',marginBottom:'4rem'}}>please enter your name <span style={{fontSize:'3rem'}}>🖊️</span></p>
           <div>
             <Input 
@@ -68,7 +58,7 @@ function WelcomePage() {
             style={{marginLeft:'5rem'}}
             onClick={()=>setUserName(name)}>submit</button>
           </div>
-        </Col2>
+        </div>
       </Container>
       <GlassEffect>
       </GlassEffect>
