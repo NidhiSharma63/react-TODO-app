@@ -42,6 +42,10 @@ const Col2 = styled.div`
   align-items: center;
   justify-content: center;
 `
+const H1 = styled.h1`
+  font-size: 7rem;
+  letter-spacing: .5rem;
+`
 
 function WelcomePage() {
   const setUserName = useStore(state => state.setUserName);
@@ -50,7 +54,7 @@ function WelcomePage() {
   return (
    <>
      <Container>
-        <div style={{marginBottom:'2rem'}}><h1 style={{fontSize:'7rem',letterSpacing:'.5rem'}}>hey! welcome <span style={{fontSize:'4rem'}}>😃</span></h1></div>
+        <div style={{marginBottom:'2rem'}}><H1>hey! welcome <span style={{fontSize:'4rem'}}>😃</span></H1></div>
         <Col2 >
           <p style={{fontSize:'5rem',marginBottom:'4rem'}}>please enter your name <span style={{fontSize:'3rem'}}>🖊️</span></p>
           <div>

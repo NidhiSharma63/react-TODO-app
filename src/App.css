@@ -46,6 +46,12 @@ input::placeholder{
     letter-spacing: .1rem;
     
 }
+.common-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 /* .App{
     padding: 0;
     margin: 0;
