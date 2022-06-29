@@ -27,12 +27,19 @@ const Col1 = styled.div`
   border-radius: .6rem;
   letter-spacing: .2rem;
 `
+const Button = styled.button`
+  font-size: 2.3rem;
+  background-color: #067969;
+  margin-left: 0rem;
+  margin-top: 2rem;
+`;
 
 export default function MainPage() {
   const name = useStore(state => state.userName);
   const task = useStore(state => state.task);
   const isAddedTrue = useStore(state => state.IsAddedTrue);
   const isAddTaskValue = useStore(state => state.isAddTaskValue);
+  console.log(task.length);
   const HaveNoTask = () => {
       return(
         <Col1 className='common-flex'>
@@ -51,9 +58,16 @@ export default function MainPage() {
         {
           task.length==0?<HaveNoTask/>:
           task.map((item,index)=>{
-            // console.log('item',item);
+            return(
+              <div key={index}>
+                <h1>{item.title}</h1>
+                <p>{item.Desc}</p>
+                <p>{item.setDate}</p>
+              </div>
+            )
           })
         }
+        <Button className='btn' onClick={()=>isAddedTrue()}>Add Task</Button>
         <div></div>
         </>
         :

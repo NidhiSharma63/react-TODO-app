@@ -5,7 +5,7 @@ const useStore = create(set => ({
   task:[],
   isAddTaskValue:false,
   setUserName: name => set(state => ({ userName: name })),
-  setTask: task => set(state => ({ task: task })),
+  setTask: task => set(state => (state.task.push(task))),
   IsAddedTrue: isAddTaskValue => set(state => ({ isAddTaskValue: true })),
   IsAddedFalse: isAddTaskValue => set(state => ({ isAddTaskValue: false })),
 }));
