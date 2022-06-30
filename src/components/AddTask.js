@@ -42,10 +42,7 @@ const Button = styled.button`
 `;
 
 function AddTask() {
-  const isAddTaskValue = useStore(state => state.isAddTaskValue);
-  const task = useStore(state => state.task);
-  const IsAddedFalse = useStore(state => state.IsAddedFalse);
-  const setTask = useStore(state => state.setTask);
+  const {IsAddedFalse, EditTask, setTask,} = useStore();
 
   const [formData,setFormData] = useState({
     title: '',
@@ -54,21 +51,24 @@ function AddTask() {
     id:uuidv4(),
   });
 
+  
+
   const handleChange = e => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   }
+
+
   
   const handleSubmit = (e) =>{
     e.preventDefault();
     const {title,Desc,setDate,id} = formData;
-    IsAddedFalse(false);
     if(title && Desc){
+      IsAddedFalse();
       setTask({title,Desc,setDate,id});
     }
-    console.log(task)
   }
 
   return (
