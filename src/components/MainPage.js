@@ -74,24 +74,27 @@ export default function MainPage() {
   const {
     name,
     task,
-    isAddedTrue,
+    IsAddedTrue,
     isAddTaskValue,
     deleteTask,
     editTaskFun,
     isEdit
   } = useStore();
 
+  // const isAddedTrue = useStore(state => state.isAddedTrue);
+
   const HaveNoTask = () => {
       return(
         <Col1 className='common-flex'>
         <h1 style={{fontSize:'3rem',marginBottom:'3rem'}}>you haven't added any task yet</h1>
-        <button className='btn1' onClick={()=>isAddedTrue()}>Add Task</button>
+        <button className='btn1' onClick={()=>IsAddedTrue()}>Add Task</button>
       </Col1>
       );
   };
 
   const handleEdit = (item) =>{
     editTaskFun(item);
+    IsAddedTrue();
   }
 
   const scratchRef = useRef(useStore.getState().task);
@@ -103,32 +106,32 @@ export default function MainPage() {
   return (
     <Container className='common-flex'>
       {
-        !isAddTaskValue?
+        (!isAddTaskValue)?
         <>
         <H1>what's up, {name}!</H1>
         <MainTaskWrapper className="">
           <TaskWrapper className="tasks">
           {
-          task.length==0?<HaveNoTask/>:
-          task.map((item,index)=>{
-            return(
-              <Task key={index}>
-                <Title className="title">
-                  <h1>{item.title}</h1> 
-                  <div>
-                    <Span onClick={()=>deleteTask(item.id)}><AiOutlineDelete/></Span>
-                    <Span2 onClick={() =>handleEdit(item)}><AiOutlineEdit/></Span2>
-                  </div>
-                </Title>
-                <p style={{marginTop:'2rem'}}>{item.Desc}</p>
-                <p style={{marginTop:'2rem'}}>{item.setDate}</p>
-              </Task>
+            task.length==0?<HaveNoTask/>:
+            task.map((item,index)=>{
+              return(
+                <Task key={index}>
+                  <Title className="title">
+                    <h1>{item.title}</h1> 
+                    <div>
+                      <Span onClick={()=>deleteTask(item.id)}><AiOutlineDelete/></Span>
+                      <Span2 onClick={() =>handleEdit(item)}><AiOutlineEdit/></Span2>
+                    </div>
+                  </Title>
+                  <p style={{marginTop:'2rem'}}>{item.Desc}</p>
+                  <p style={{marginTop:'2rem'}}>{item.Date}</p>
+                </Task>
             )
           })
         }
           </TaskWrapper>
         </MainTaskWrapper>
-        {task.length!=0 || !isEdit && <button className='btn1 btn2' onClick={()=>isAddedTrue()}>Add Task</button>}
+        {(task.length!=0 )  && <button className='btn1 btn2' onClick={()=>IsAddedTrue()}>Add Task</button>}
         
         </>
         :
@@ -136,7 +139,7 @@ export default function MainPage() {
 
       }
 
-      {isEdit && <AddTask />}
+      {/* {isEdit && <AddTask />} */}
       
 
     </Container>

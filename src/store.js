@@ -11,6 +11,7 @@ const useStore = create(
       isEdit:false,
       IsAddedTrue: () => set(state => ({ isAddTaskValue: true })),
       IsAddedFalse: () => set(state => ({ isAddTaskValue: false })),
+      EditFalse: () =>set(state =>({isEdit:false})),
     
       setUserName: name => set(state => ({ userName: name })),
       setTask: task => set(state => (state.task.push(task))),
@@ -18,9 +19,7 @@ const useStore = create(
         task: state.task.filter(t => t.id !== id)
       })),
       editTaskFun: item => set(state => (state.EditTask.push(item),state.isEdit=true)),
-      // editTaskFun:(item) =>set (state=>(
-      //   // console.log(item),
-      //   {EditTask:state.EditTask.push(item)})),
+      ClearEditArray: () => set(state => (state.EditTask=[])),
     })
   )
 );

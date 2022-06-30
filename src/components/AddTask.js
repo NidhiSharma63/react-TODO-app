@@ -42,35 +42,33 @@ const Button = styled.button`
 `;
 
 function AddTask() {
-  const {IsAddedFalse, EditTask, setTask,} = useStore();
-
-  const [formData,setFormData] = useState({
-    title: '',
-    Desc: '',
-    setDate:'',
-    id:uuidv4(),
-  });
-
-  
-
-  const handleChange = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  }
+  const {IsAddedFalse, EditTask, setTask,isEdit,EditFalse,ClearEditArray} = useStore();
+  const [title,setTitle] = useState('');
+  const [Desc,setDesc] = useState('');
+  const [Date,setDate] = useState('');
 
 
-  
   const handleSubmit = (e) =>{
     e.preventDefault();
-    const {title,Desc,setDate,id} = formData;
     if(title && Desc){
       IsAddedFalse();
-      setTask({title,Desc,setDate,id});
+      setTask({title,Desc,Date,id:uuidv4()});
+      ClearEditArray();
     }
   }
 
+  const handleChangeInput = (e) => {
+    setTitle(e.target.value);
+    EditFalse();
+  }
+  const handleChangeTextArea = (e) => {
+    setDesc(e.target.value);
+    EditFalse();
+  }
+  const handleChangeDate = (e) => {
+    setDate(e.target.value);
+    EditFalse();
+  }
   return (
     <FromDiv>
       <Form onSubmit={handleSubmit}>
@@ -81,8 +79,8 @@ function AddTask() {
         name="title" 
         id="title"
         placeholder="Add title"
-        value={formData.title}
-        onChange={handleChange}/>
+        value={isEdit?EditTask[0].title:title}
+        onChange={(e)=>handleChangeInput(e)}/>
         <Lable htmlFor="Desc">Desc:</Lable>
         <Textarea 
         type="text" 
@@ -91,16 +89,17 @@ function AddTask() {
         rows="8"
         cols="40"
         placeholder='Description..'
-        value={formData.description}
-        onChange={handleChange}></Textarea>
+        value={isEdit?EditTask[0].Desc:Desc}
+        onChange={(e)=>handleChangeTextArea(e)}>
+        </Textarea>
         <Lable htmlFor="calender">Set Time</Lable>
         <Input
         className='input' 
         type="datetime-local" 
         name="calender" 
         id="" 
-        onChange={handleChange}
-        value={formData.setDate}/>
+        onChange={(e)=>handleChangeDate(e)}
+        value={Date}/>
         <button 
         type="submit"
         className='btn1 btn2'>
