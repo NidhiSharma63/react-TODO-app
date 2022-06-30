@@ -1,10 +1,9 @@
-import React from 'react';
+import React,{useRef} from 'react';
 import styled from "styled-components";
 import useStore from '../store';
 import AddTask from './AddTask';
 import {AiOutlineDelete} from 'react-icons/ai';
 import {AiOutlineEdit} from 'react-icons/ai';
-
 
 const Container = styled.div`
   width: 80%;
@@ -55,7 +54,9 @@ export default function MainPage() {
   const task = useStore(state => state.task);
   const isAddedTrue = useStore(state => state.IsAddedTrue);
   const isAddTaskValue = useStore(state => state.isAddTaskValue);
-  // console.log(task.length);
+  const deleteTask = useStore(state => state.deleteTask);
+  console.log(task);
+
   const HaveNoTask = () => {
       return(
         <Col1 className='common-flex'>
@@ -63,6 +64,12 @@ export default function MainPage() {
         <button className='btn1' onClick={()=>isAddedTrue()}>Add Task</button>
       </Col1>
       )
+  };
+
+  const scratchRef = useRef(useStore.getState().task);
+  const DeleteTask = (id) =>{
+    console.log(scratchRef.current);
+    scratchRef.current = scratchRef.current.filter(task => task.id !== id)
   }
 
   return (
@@ -76,7 +83,7 @@ export default function MainPage() {
           task.map((item,index)=>{
             return(
               <Task key={index}>
-                <Title className="title"><h1>{item.title}</h1> <Span><AiOutlineDelete/></Span><Span2><AiOutlineEdit/></Span2></Title>
+                <Title className="title"><h1>{item.title}</h1> <Span onClick={()=>deleteTask(item.id)}><AiOutlineDelete/></Span><Span2><AiOutlineEdit/></Span2></Title>
                 <p style={{marginTop:'2rem'}}>{item.Desc}</p>
                 <p style={{marginTop:'2rem'}}>{item.setDate}</p>
               </Task>

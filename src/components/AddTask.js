@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import useStore from '../store';
+import { v4 as uuidv4 } from 'uuid';
 
 const FromDiv = styled.div`
   display: flex;
@@ -50,6 +51,7 @@ function AddTask() {
     title: '',
     Desc: '',
     setDate:'',
+    id:uuidv4(),
   });
 
   const handleChange = e => {
@@ -61,10 +63,10 @@ function AddTask() {
   
   const handleSubmit = (e) =>{
     e.preventDefault();
-    const {title,Desc,setDate} = formData;
+    const {title,Desc,setDate,id} = formData;
     IsAddedFalse(false);
     if(title && Desc){
-      setTask({title,Desc,setDate});
+      setTask({title,Desc,setDate,id});
     }
     console.log(task)
   }
