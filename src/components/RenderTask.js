@@ -3,6 +3,7 @@ import useStore from '../store';
 import styled from "styled-components";
 import {AiOutlineDelete} from 'react-icons/ai';
 import {AiOutlineEdit} from 'react-icons/ai';
+import {FcAlarmClock} from 'react-icons/fc';
 
 const Task = styled.div`
   border: 1px solid;
@@ -40,10 +41,13 @@ function RenderTask() {
     IsAddedTrue();
   }
 
+
+
   return (
     <>
       {
-      task.map((item,index)=>{
+        task.map((item,index)=>{
+          console.log(task)
         return(
           <Task key={index}>
             <Title className="title">
@@ -54,7 +58,7 @@ function RenderTask() {
               </div>
             </Title>
             <p style={{marginTop:'2rem'}}>{item.Desc}</p>
-            <p style={{marginTop:'2rem'}}>{item.Date}</p>
+            <p style={{marginTop:'2rem'}}><span style={{marginTop:'1rem',fontSize:'2rem'}}><FcAlarmClock/></span>{item.date}</p>
           </Task>
        )
       })
