@@ -2,8 +2,7 @@ import React,{useRef,useState} from 'react';
 import styled from "styled-components";
 import useStore from '../store';
 import AddTask from './AddTask';
-import {AiOutlineDelete} from 'react-icons/ai';
-import {AiOutlineEdit} from 'react-icons/ai';
+import RenderTask from './RenderTask';
 
 const Container = styled.div`
   width: 80%;
@@ -27,29 +26,6 @@ const Col1 = styled.div`
   width: 90%;
   border-radius: .6rem;
   letter-spacing: .2rem;
-`
-const Task = styled.div`
-  border: 1px solid;
-  padding: 1rem 2rem;
-  background: #067969;
-  color: white;
-  border-radius: 1rem;
-  font-size: 1.5rem;
-  width: 80%;
-`
-const Title = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-const Span = styled.span`
-  font-size: 2.3rem;
-  margin-left: 8rem;
-  margin-right: 1.2rem;
-  cursor: pointer;
-`
-const Span2 = styled.span`
-  font-size: 2.3rem;
-  cursor: pointer;
 `
 const MainTaskWrapper = styled.div`
   height: 100%;
@@ -76,8 +52,6 @@ export default function MainPage() {
     task,
     IsAddedTrue,
     isAddTaskValue,
-    deleteTask,
-    editTaskFun,
     isEdit
   } = useStore();
 
@@ -91,11 +65,6 @@ export default function MainPage() {
       );
   };
 
-  const handleEdit = (item) =>{
-    editTaskFun(item);
-    IsAddedTrue();
-  }
-
   return (
     <Container className='common-flex'>
       {
@@ -105,23 +74,8 @@ export default function MainPage() {
         <MainTaskWrapper className="">
           <TaskWrapper className="tasks">
           {
-            task.length==0?<HaveNoTask/>:
-            task.map((item,index)=>{
-              return(
-                <Task key={index}>
-                  <Title className="title">
-                    <h1>{item.title}</h1> 
-                    <div>
-                      <Span onClick={()=>deleteTask(item.id)}><AiOutlineDelete/></Span>
-                      <Span2 onClick={() =>handleEdit(item)}><AiOutlineEdit/></Span2>
-                    </div>
-                  </Title>
-                  <p style={{marginTop:'2rem'}}>{item.Desc}</p>
-                  <p style={{marginTop:'2rem'}}>{item.Date}</p>
-                </Task>
-            )
-          })
-        }
+            task.length==0?<HaveNoTask/>:<RenderTask/>
+          }
           </TaskWrapper>
         </MainTaskWrapper>
         {(task.length!=0 )  && <button className='btn1 btn2' onClick={()=>IsAddedTrue()}>Add Task</button>}
@@ -131,10 +85,6 @@ export default function MainPage() {
         <AddTask />
 
       }
-
-      {/* {isEdit && <AddTask />} */}
-      
-
     </Container>
   )
 }
