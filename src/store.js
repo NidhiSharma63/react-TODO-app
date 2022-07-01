@@ -2,16 +2,18 @@ import create from 'zustand';
 import { devtools } from "zustand/middleware";
 
 function set_state(state, task) {
-  if (state.isEdit) {
-    return {
-      task: state.task.filter(item => item.id !== state.EditTask[0].id)
-    };
-  } else {
-    return {
-      task: [...state.task, task]
-    };
+  return {
+    task: [task,...state.task,],
   }
+};
 
+
+function handle_Edit(state, item) {
+  state.EditTask.push(item);
+  state.isEdit = true;
+  return {
+    task: state.task.filter(item => item.id !== state.EditTask[0].id),
+  };
 }
 
 const useStore = create(
@@ -33,7 +35,9 @@ const useStore = create(
       deleteTask: (id) => set(state => ({
         task: state.task.filter(t => t.id !== id)
       })),
-      editTaskFun: item => set(state => (state.EditTask.push(item), state.isEdit = true)),
+
+      editTaskFun:(item) =>set(state=> handle_Edit(state,item)),
+      // editTaskFun: item => set(state => (state.EditTask.push(item), state.isEdit = true)),
       ClearEditArray: () => set(state => (state.EditTask = [])),
     })
   )

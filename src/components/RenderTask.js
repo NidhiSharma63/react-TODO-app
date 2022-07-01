@@ -33,8 +33,7 @@ function RenderTask() {
     task, 
     deleteTask,
     editTaskFun,
-    IsAddedTrue,
-    isEdit } = useStore();
+    IsAddedTrue} = useStore();
 
   const handleEdit = (item) =>{
     editTaskFun(item);

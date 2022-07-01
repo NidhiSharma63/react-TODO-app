@@ -15,10 +15,10 @@ function App() {
   const name = useStore(state => state.userName);
   return (
       <MainContainer>
-        {/* <MainPage /> */}
-        {
+        <MainPage />
+        {/* {
           name!==''?<MainPage />:<WelcomePage /> 
-        }
+        } */}
         </MainContainer>
   );
 }
