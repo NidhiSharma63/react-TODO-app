@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import '../calender.css';
 import Calendar from 'react-calendar';
 import '../App.css';
+import { useNavigate } from "react-router-dom";
 
 
 const FromDiv = styled.div`
@@ -41,13 +42,10 @@ const Textarea = styled.textarea`
 const P = styled.p`
   font-size: 2rem;
   font-weight: 400;
-`
-
-const CalendarDiv = styled.div`
-  position: relative;
-`
+`;
 
 function AddTask() {
+  const navigate = useNavigate();
 
   const {IsAddedFalse, EditTask, setTask,isEdit,EditFalse,ClearEditArray} = useStore();
   const [title,setTitle] = useState('');
@@ -64,9 +62,10 @@ function AddTask() {
   const handleSubmit = (e) =>{
     e.preventDefault();
     if(title && Desc){
-      IsAddedFalse();
+      // IsAddedFalse();
       setTask({title,Desc,date:(pElem.current.innerText),id:uuidv4()});
       ClearEditArray();
+      navigate('/mainpage')
     }
   }
 
@@ -122,4 +121,4 @@ function AddTask() {
   )
 }
 
-export default AddTask
+export default AddTask;

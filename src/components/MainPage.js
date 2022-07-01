@@ -78,7 +78,7 @@ export default function MainPage() {
             }
             </TaskWrapper>
           </MainTaskWrapper>
-          {(task.length!=0 )  && <button className='btn1 btn2' onClick={()=>IsAddedTrue()}>Add Task</button>}
+          {(task.length!=0 )  && <button className='btn1 btn2'>Add Task</button>}
         
         </>
         :

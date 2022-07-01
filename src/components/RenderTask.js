@@ -4,6 +4,9 @@ import styled from "styled-components";
 import {AiOutlineDelete} from 'react-icons/ai';
 import {AiOutlineEdit} from 'react-icons/ai';
 import {FcAlarmClock} from 'react-icons/fc';
+import { useNavigate } from "react-router";
+
+
 
 const Task = styled.div`
   border: 1px solid;
@@ -30,6 +33,7 @@ const Span2 = styled.span`
 `
 
 function RenderTask() {
+  const navigate = useNavigate();
   const { 
     task, 
     deleteTask,
@@ -41,13 +45,10 @@ function RenderTask() {
     IsAddedTrue();
   }
 
-
-
   return (
     <>
       {
         task.map((item,index)=>{
-          console.log(task)
         return(
           <Task key={index}>
             <Title className="title">
