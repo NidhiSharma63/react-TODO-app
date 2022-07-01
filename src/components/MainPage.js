@@ -70,15 +70,15 @@ export default function MainPage() {
       {
         (!isAddTaskValue)?
         <>
-        <H1>what's up, {userName}!</H1>
-        <MainTaskWrapper className="">
-          <TaskWrapper className="tasks">
-          {
-            task.length==0?<HaveNoTask/>:<RenderTask/>
-          }
-          </TaskWrapper>
-        </MainTaskWrapper>
-        {(task.length!=0 )  && <button className='btn1 btn2' onClick={()=>IsAddedTrue()}>Add Task</button>}
+          <H1>what's up, {userName}!</H1>
+          <MainTaskWrapper className="">
+            <TaskWrapper className="tasks">
+            {
+              task.length==0?<HaveNoTask/>:<RenderTask/>
+            }
+            </TaskWrapper>
+          </MainTaskWrapper>
+          {(task.length!=0 )  && <button className='btn1 btn2' onClick={()=>IsAddedTrue()}>Add Task</button>}
         
         </>
         :

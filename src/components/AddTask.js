@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import useStore from '../store';
 import { v4 as uuidv4 } from 'uuid';
+import Calander from './Calander';
+
 
 const FromDiv = styled.div`
   display: flex;
@@ -24,7 +26,7 @@ const Lable = styled.label`
 const Input = styled.input`
   color:#067969;
   border-bottom:.5px solid #067969;
-  letter-spacing: .3rem;
+  letter-spacing: .1rem;
 `;
 const Textarea = styled.textarea`
   background: #f2f7f7;
@@ -34,12 +36,10 @@ const Textarea = styled.textarea`
   color:#067969;
   border-radius: .6rem;
 `;
-const Button = styled.button`
-  font-size: 2.3rem;
-  background-color: #067969;
-  margin-left: 0rem;
-  margin-top: 2rem;
-`;
+const P = styled.p`
+  font-size: 2rem;
+  font-weight: 400;
+`
 
 function AddTask() {
   const {IsAddedFalse, EditTask, setTask,isEdit,EditFalse,ClearEditArray} = useStore();
@@ -93,13 +93,16 @@ function AddTask() {
         onChange={(e)=>handleChangeTextArea(e)}>
         </Textarea>
         <Lable htmlFor="calender">Set Time</Lable>
-        <Input
+        <div>
+          <P>22-februrary 4:40 pm</P>
+        </div>
+        {/* <Input
         className='input' 
         type="datetime-local" 
         name="calender" 
         id="" 
         onChange={(e)=>handleChangeDate(e)}
-        value={Date}/>
+        value={Date}/> */}
         <button 
         type="submit"
         className='btn1 btn2'>

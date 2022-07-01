@@ -37,7 +37,6 @@ const useStore = create(
       })),
 
       editTaskFun:(item) =>set(state=> handle_Edit(state,item)),
-      // editTaskFun: item => set(state => (state.EditTask.push(item), state.isEdit = true)),
       ClearEditArray: () => set(state => (state.EditTask = [])),
     })
   )
