@@ -1,5 +1,4 @@
 import './App.css';
-import React from 'react';
 import styled from "styled-components";
 import WelcomePage from './components/welcomePage';
 import MainPage from './components/MainPage';
@@ -17,22 +16,12 @@ const MainContainer = styled.div`
 function App() {
   const name = useStore(state => state.userName);
   return (
-    <Router>
       <MainContainer>
         <MainPage />
         {/* {
           name!==''?<MainPage />:<WelcomePage /> 
         } */}
-      </MainContainer>
-
-      <Routes>
-        {/* <Route path='/' element={<Home/>}/> */}
-        <Route path='/mainpage' element={<MainPage />}/>
-        {/* <Route path='/contact' element={<Contact/>}/> */}
-        {/* <Route path='*' element={<Error/>}/> */}
-      </Routes>
-    </Router>
-      
+        </MainContainer>
   );
 }
 

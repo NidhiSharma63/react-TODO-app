@@ -4,8 +4,6 @@ import styled from "styled-components";
 import {AiOutlineDelete} from 'react-icons/ai';
 import {AiOutlineEdit} from 'react-icons/ai';
 import {FcAlarmClock} from 'react-icons/fc';
-import { useNavigate } from "react-router";
-
 
 
 const Task = styled.div`
@@ -33,7 +31,6 @@ const Span2 = styled.span`
 `
 
 function RenderTask() {
-  const navigate = useNavigate();
   const { 
     task, 
     deleteTask,
@@ -68,4 +65,4 @@ function RenderTask() {
   )
 }
 
-export default RenderTask
+export default RenderTask;
