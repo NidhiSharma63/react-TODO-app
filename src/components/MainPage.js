@@ -72,7 +72,7 @@ const TaskWrapper = styled.div`
 
 export default function MainPage() {
   const {
-    name,
+    userName,
     task,
     IsAddedTrue,
     isAddTaskValue,
@@ -81,8 +81,7 @@ export default function MainPage() {
     isEdit
   } = useStore();
 
-  // const isAddedTrue = useStore(state => state.isAddedTrue);
-
+  
   const HaveNoTask = () => {
       return(
         <Col1 className='common-flex'>
@@ -97,18 +96,12 @@ export default function MainPage() {
     IsAddedTrue();
   }
 
-  const scratchRef = useRef(useStore.getState().task);
-  const DeleteTask = (id) =>{
-    console.log(scratchRef.current);
-    scratchRef.current = scratchRef.current.filter(task => task.id !== id)
-  }
-
   return (
     <Container className='common-flex'>
       {
         (!isAddTaskValue)?
         <>
-        <H1>what's up, {name}!</H1>
+        <H1>what's up, {userName}!</H1>
         <MainTaskWrapper className="">
           <TaskWrapper className="tasks">
           {
