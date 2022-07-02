@@ -3,7 +3,6 @@ import styled from "styled-components";
 import WelcomePage from './components/welcomePage';
 import MainPage from './components/MainPage';
 import useStore from './store';
-import EditTask from './components/EditTask';
 import { BrowserRouter as Router,Routes, Route, NavLink, Link } from 'react-router-dom'
 
 
