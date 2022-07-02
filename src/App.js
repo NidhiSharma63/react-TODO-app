@@ -15,10 +15,12 @@ const MainContainer = styled.div`
 
 function App() {
   const name = useStore(state => state.userName);
+  // const Portal = useStore(state => state.Portal);
   const loadPrevTask = useStore(state => state.loadPrevTask);
   useEffect(()=>{
     loadPrevTask();
-  },[])
+  },[]);
+  const show = false;
   return (
       <>
         <MainContainer className='handleWidth'>
@@ -26,9 +28,9 @@ function App() {
           name!==''?<MainPage />:<WelcomePage /> 
         }
         </MainContainer>
-        {/* {
+        { 
           ReactDOM.createPortal(<Portal />, document.getElementById('portal'))
-        } */}
+        }
       </>
   );
 }

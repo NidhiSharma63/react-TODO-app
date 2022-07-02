@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import  useStore  from '../store';
 
 const OverLay = styled.div`
   position: fixed;
@@ -38,9 +39,18 @@ const Div = styled.div`
   height: 200px;
   background: white;
   border-radius: 0.6rem;
+  padding: 0rem 1rem;
 `
 
 function Portal() {
+  
+  const Portal = useStore(state => state.Portal);
+  const setPortal = useStore(state => state.setPortal);
+  const handleClick = ()  =>{
+    setPortal(false);
+
+  }
+  if(!Portal) return null;
   return(
     <>
     <OverLay className='overLay'></OverLay>
@@ -48,7 +58,9 @@ function Portal() {
      <div className='div'>
       <Div>
           <h1>checked! you have missed Task or Desc</h1><br/>
-          <button className='btn1 btn2'>close</button>
+          <button 
+          className='btn1 btn2'
+          onClick={handleClick}>close</button>
         </Div>
      </div>
     </Container>

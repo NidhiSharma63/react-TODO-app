@@ -45,12 +45,12 @@ const P = styled.p`
 
 function AddTask() {
 
-  const {IsAddedFalse, EditTask, setTask,isEdit,EditFalse,ClearEditArray,submit} = useStore();
+  const {IsAddedFalse, EditTask, setTask,isEdit,EditFalse,ClearEditArray,Portal,setPortal} = useStore();
   const [title,setTitle] = useState('');
   const [Desc,setDesc] = useState('');
   const [date,setDate] = useState(new Date());
   const [showCalender,setShowCalender] = useState(false);
-  // const [submit,setSubmit] = useState(false);
+  const [submit,setSubmit] = useState(false);
 
   const pElem = useRef(null);
 
@@ -58,15 +58,24 @@ function AddTask() {
     setDate(date);
   };
 
-  useEffect(()=>{
-    if(title && Desc){
-      submit(true);
-      console.log(submit);
-    }
-  },[title,Desc])
+  // useEffect(()=>{
+  //   if(title && Desc){
+  //     setSubmit(true);
+  //     // submit(true);
+  //     // console.log(submit);
+  //   }
+  //   console.log(submit);
+  // },[])
 
   const handleSubmit = (e) =>{
     e.preventDefault();
+    // console.log('clicked');
+    if(!title || !Desc){
+      // console.log('empty');
+      setPortal(true);
+      // console.log(Portal);
+      return;
+    }
     IsAddedFalse();
     setTask({title,Desc,date:(pElem.current.innerText),id:uuidv4()});
     ClearEditArray();
@@ -93,7 +102,6 @@ function AddTask() {
         id="title"
         placeholder="Add title"
         value={isEdit?EditTask[0].title:title}
-        required
         onChange={(e)=>handleChangeInput(e)}/>
 
         <Lable htmlFor="Desc">Desc:</Lable>
@@ -104,7 +112,6 @@ function AddTask() {
         cols="40"
         placeholder='Description..'
         value={isEdit?EditTask[0].Desc:Desc}
-        required
         onChange={(e)=>handleChangeTextArea(e)}>
         </Textarea>
 
@@ -120,7 +127,7 @@ function AddTask() {
           <P ref={pElem}>{date.toString().substring(0,15)}</P>
         </div>
         <button 
-        type="button"
+        type="submit"
         // disabled = {!title || !Desc?true:false}
         required
         className='btn1 btn2'>
