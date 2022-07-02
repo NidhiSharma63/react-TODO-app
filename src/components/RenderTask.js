@@ -50,7 +50,7 @@ function RenderTask() {
       {
         task.map((item,index)=>{
         return(
-          <Task key={index}>
+          <Task key={index} className="task">
             <Title className="title">
               <h1>{item.title}</h1> 
               <div>
