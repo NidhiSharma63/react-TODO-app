@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 import '../calender.css';
 import Calendar from 'react-calendar';
 import '../App.css';
-import Portal from './Portal';
 
 
 const FromDiv = styled.div`
@@ -46,12 +45,12 @@ const P = styled.p`
 
 function AddTask() {
 
-  const {IsAddedFalse, EditTask, setTask,isEdit,EditFalse,ClearEditArray} = useStore();
+  const {IsAddedFalse, EditTask, setTask,isEdit,EditFalse,ClearEditArray,submit} = useStore();
   const [title,setTitle] = useState('');
   const [Desc,setDesc] = useState('');
   const [date,setDate] = useState(new Date());
   const [showCalender,setShowCalender] = useState(false);
-  const [submit,setSubmit] = useState(false);
+  // const [submit,setSubmit] = useState(false);
 
   const pElem = useRef(null);
 
@@ -61,7 +60,8 @@ function AddTask() {
 
   useEffect(()=>{
     if(title && Desc){
-      setSubmit(true);
+      submit(true);
+      console.log(submit);
     }
   },[title,Desc])
 
@@ -127,8 +127,6 @@ function AddTask() {
         Add</button>
       </Form>
     </FromDiv>
-    {/* <Portal/> */}
-    {/* {submit  && <Portal />} */}
     </>
   )
 }

@@ -15,14 +15,15 @@ const H1 = styled.h1`
 `
 
 const Container = styled.div`
-  position: relative;
-  top: 50%;
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
-  margin: auto;
-  width: 387px;
-  height: 155px;
-  background: white;
- 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const Div = styled.div`
@@ -31,9 +32,12 @@ const Div = styled.div`
   text-align: center;
   align-items:center;
   justify-content:center;
-  border-radius: .6rem;
   color:#067969;
   flex-direction:column;
+  width: 400px;
+  height: 200px;
+  background: white;
+  border-radius: 0.6rem;
 `
 
 function Portal() {
@@ -41,10 +45,12 @@ function Portal() {
     <>
     <OverLay className='overLay'></OverLay>
     <Container>
+     <div className='div'>
       <Div>
-        <h1>checked! you have missed Task or Desc</h1><br/>
-        <button className='btn1 btn2'>close</button>
-      </Div>
+          <h1>checked! you have missed Task or Desc</h1><br/>
+          <button className='btn1 btn2'>close</button>
+        </Div>
+     </div>
     </Container>
     </>
   );

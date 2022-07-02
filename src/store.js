@@ -34,6 +34,8 @@ const useStore = create(
       isAddTaskValue: false,
       EditTask: [],
       isEdit: false,
+      submit: false,
+
       IsAddedTrue: () => set(state => ({ isAddTaskValue: true })),
       IsAddedFalse: () => set(state => ({ isAddTaskValue: false })),
       EditFalse: () => set(state => ({ isEdit: false })),
