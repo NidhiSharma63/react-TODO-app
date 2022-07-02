@@ -77,7 +77,7 @@ export default function MainPage() {
         <>
           <H1>what's up, {userName}!</H1>
           <MainTaskWrapper className="">
-            <TaskWrapper className="tasks">
+            <TaskWrapper className="taskWrapper">
             {
               task.length==0?<HaveNoTask/>:<RenderTask/>
             }

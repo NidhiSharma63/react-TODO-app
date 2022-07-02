@@ -83,13 +83,15 @@ textarea:focus{
 }
 .handleWidth{
   max-width: 1440px;
-  min-width: 57rem;
-  /* min-width: 121.6rem; */
+  min-width: 63rem;
 }
 
  @media screen and (max-width:660px) {
     .handleWidth{
         min-width: 33rem;
+    }
+    .taskWrapper{
+        margin-right: 0px !important;
     }
     .task{
         width: 100% !important;

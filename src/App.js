@@ -9,7 +9,7 @@ import { BrowserRouter as Router,Routes, Route, NavLink, Link } from 'react-rout
 
 // change the min width to max width
 const MainContainer = styled.div`
-  
+
   position: relative;
   height: 90vh;
 `
@@ -19,10 +19,9 @@ function App() {
   return (
       <Router>
         <MainContainer className='handleWidth'>
-        <MainPage />
-        {/* {
+        {
           name!==''?<MainPage />:<WelcomePage /> 
-        } */}
+        }
         </MainContainer>
       </Router>
   );
