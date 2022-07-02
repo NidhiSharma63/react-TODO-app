@@ -15,7 +15,6 @@ const MainContainer = styled.div`
 
 function App() {
   const name = useStore(state => state.userName);
-  // const Portal = useStore(state => state.Portal);
   const loadPrevTask = useStore(state => state.loadPrevTask);
   useEffect(()=>{
     loadPrevTask();

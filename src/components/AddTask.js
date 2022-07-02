@@ -58,22 +58,10 @@ function AddTask() {
     setDate(date);
   };
 
-  // useEffect(()=>{
-  //   if(title && Desc){
-  //     setSubmit(true);
-  //     // submit(true);
-  //     // console.log(submit);
-  //   }
-  //   console.log(submit);
-  // },[])
-
   const handleSubmit = (e) =>{
     e.preventDefault();
-    // console.log('clicked');
     if(!title || !Desc){
-      // console.log('empty');
       setPortal(true);
-      // console.log(Portal);
       return;
     }
     IsAddedFalse();
@@ -128,8 +116,6 @@ function AddTask() {
         </div>
         <button 
         type="submit"
-        // disabled = {!title || !Desc?true:false}
-        required
         className='btn1 btn2'>
         Add</button>
       </Form>

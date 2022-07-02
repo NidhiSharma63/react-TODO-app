@@ -44,12 +44,6 @@ function RenderTask() {
     IsAddedTrue();
   }
 
-  // console.log(task);
-  // useEffect(() => {
-  //   localStorage.setItem('task', JSON.stringify(task));
-  //   console.log(localStorage.getItem('task'));
-  // }, [task]);
-
   return (
     <>
       {
