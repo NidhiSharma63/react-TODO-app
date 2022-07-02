@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from "styled-components";
 import useStore from '../store';
 
@@ -35,6 +35,16 @@ function WelcomePage() {
   const setUserName = useStore(state => state.setUserName);
   const [name, setName] = React.useState('');
 
+  const handleSubmit= () =>{
+    setUserName(name);
+    localStorage.setItem('userName', JSON.stringify(name));
+  }
+  useEffect(() => {
+    if(localStorage.getItem('userName')!=null){
+    setUserName(localStorage.getItem('userName'));
+    }
+  }, []);
+
   return (
    <>
      <Container className='common-flex'>
@@ -51,7 +61,7 @@ function WelcomePage() {
             <button 
             className='btn1' 
             style={{marginLeft:'5rem'}}
-            onClick={()=>setUserName(name)}>submit</button>
+            onClick={handleSubmit}>submit</button>
           </div>
         </div>
       </Container>

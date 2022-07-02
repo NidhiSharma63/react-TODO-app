@@ -8,13 +8,13 @@ import { BrowserRouter as Router,Routes, Route, NavLink, Link } from 'react-rout
 
 // change the min width to max width
 const MainContainer = styled.div`
-
   position: relative;
   height: 90vh;
 `
 
 function App() {
   const name = useStore(state => state.userName);
+  console.log(name);
   return (
       <Router>
         <MainContainer className='handleWidth'>
