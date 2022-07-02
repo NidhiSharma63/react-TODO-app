@@ -10,6 +10,14 @@ function set_state(state, newTask) {
     return;
 };
 
+function loadPrevTask(state) {
+  if(JSON.parse(localStorage.getItem('task'))!=null){
+    state.task = JSON.parse(localStorage.getItem('task'));
+  }
+  return 
+}
+
+// window.onload = loadPrevTask;
 function handle_Edit(state, item) {
   state.EditTask.push(item);
   state.isEdit = true;
@@ -40,6 +48,7 @@ const useStore = create(
 
       editTaskFun:(item) =>set(state=> handle_Edit(state,item)),
       ClearEditArray: () => set(state => (state.EditTask = [])),
+      loadPrevTask: () => set(state => loadPrevTask(state)),
     })
   )
 );
