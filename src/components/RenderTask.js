@@ -13,7 +13,10 @@ const Task = styled.div`
   color: white;
   border-radius: 1rem;
   font-size: 1.5rem;
-  width: 80%;
+  // width: 30rem;
+  width:auto;
+  margin:.6em;
+  height: 15rem;
 `
 const Title = styled.div`
   display: flex;

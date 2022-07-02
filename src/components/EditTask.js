@@ -45,77 +45,9 @@ const P = styled.p`
 
 function AddTask() {
 
-  const {IsAddedFalse, EditTask, setTask,isEdit,EditFalse,ClearEditArray} = useStore();
-  const [title,setTitle] = useState('');
-  const [Desc,setDesc] = useState('');
-  const [date,setDate] = useState(new Date());
-  const [showCalender,setShowCalender] = useState(false);
-
-  const pElem = useRef(null);
-
-  const onChange = date =>{
-    setDate(date);
-  };
-
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    if(title && Desc){
-      IsAddedFalse();
-      setTask({title,Desc,date:(pElem.current.innerText),id:uuidv4()});
-      ClearEditArray();
-    }
-  }
-
-  const handleChangeInput = (e) => {
-    setTitle(e.target.value);
-    EditFalse();
-  }
-  const handleChangeTextArea = (e) => {
-    setDesc(e.target.value);
-    EditFalse();
-  }
-  return (
-    <FromDiv>
-      <Form onSubmit={handleSubmit}>
-        <Lable htmlFor="title">title:</Lable>
-        <Input
-        className='input' 
-        type="text" 
-        name="title" 
-        id="title"
-        placeholder="Add title"
-        value={isEdit?EditTask[0].title:title}
-        onChange={(e)=>handleChangeInput(e)}/>
-
-        <Lable htmlFor="Desc">Desc:</Lable>
-        <Textarea 
-        type="text" 
-        name="Desc" 
-        rows="8"
-        cols="40"
-        placeholder='Description..'
-        value={isEdit?EditTask[0].Desc:Desc}
-        onChange={(e)=>handleChangeTextArea(e)}>
-        </Textarea>
-
-        <Lable 
-          htmlFor="calender" 
-          onClick={()=>setShowCalender((prev)=>prev = !prev)}>Set Time
-        </Lable>
-        {showCalender && 
-        <Calendar 
-          onChange={onChange} 
-          value={date} />}
-        <div>
-          <P ref={pElem}>{date.toString().substring(0,15)}</P>
-        </div>
-        <button 
-        type="submit"
-        className='btn1 btn2'>
-        Add</button>
-      </Form>
-    </FromDiv>
-  )
+  return(
+    <h1>edit page</h1>
+  ) 
 }
 
 export default AddTask;

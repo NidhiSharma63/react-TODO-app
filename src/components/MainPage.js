@@ -5,7 +5,7 @@ import AddTask from './AddTask';
 import RenderTask from './RenderTask';
 
 const Container = styled.div`
-  width: 80%;
+  padding: 0rem 2rem;
   margin: 0 auto;
   background-color: white;
   padding: 1rem;
@@ -29,21 +29,26 @@ const Col1 = styled.div`
 `
 const MainTaskWrapper = styled.div`
   height: 100%;
+  width: 100%;
   overflow-y: none;
   overflow: hidden;
   padding: 1rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const TaskWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content:flex-start;
   width: 100%;
-  height: 100%;
+  height:100%;
   overflow-y: scroll;
   box-sizing: content-box;
-  padding-right: 20px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  margin-right: -40px;
 `
 
 export default function MainPage() {

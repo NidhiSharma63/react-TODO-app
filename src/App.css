@@ -81,6 +81,32 @@ textarea:focus{
     justify-content: center;
     flex-direction: column;
 }
+.handleWidth{
+  max-width: 1440px;
+  min-width: 121.6rem;
+}
+
+@media screen and (max-width:1442px) {
+    .handleWidth{
+        max-width: 1380px
+    }
+}
+@media screen and (max-width:1440px) {
+    .handleWidth{
+        max-width: 1328px
+    }
+}
+@media screen and (max-width:1300px) {
+    .handleWidth{
+        max-width: 1170px;
+        min-width: 90.2px;
+    }
+}
+@media screen and (max-width:1270px) {
+    .handleWidth{
+        max-width: 1185px;
+    }
+}
 /* .calender{
     position: absolute;
     background: #067969 !important;
