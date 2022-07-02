@@ -1,10 +1,11 @@
-import React, {useState,useRef} from 'react';
+import React, {useState,useRef,useEffect} from 'react';
 import styled from 'styled-components';
 import useStore from '../store';
 import { v4 as uuidv4 } from 'uuid';
 import '../calender.css';
 import Calendar from 'react-calendar';
 import '../App.css';
+import Portal from './Portal';
 
 
 const FromDiv = styled.div`
@@ -50,6 +51,7 @@ function AddTask() {
   const [Desc,setDesc] = useState('');
   const [date,setDate] = useState(new Date());
   const [showCalender,setShowCalender] = useState(false);
+  const [submit,setSubmit] = useState(false);
 
   const pElem = useRef(null);
 
@@ -57,13 +59,17 @@ function AddTask() {
     setDate(date);
   };
 
+  useEffect(()=>{
+    if(title && Desc){
+      setSubmit(true);
+    }
+  },[title,Desc])
+
   const handleSubmit = (e) =>{
     e.preventDefault();
-    if(title && Desc){
-      IsAddedFalse();
-      setTask({title,Desc,date:(pElem.current.innerText),id:uuidv4()});
-      ClearEditArray();
-    }
+    IsAddedFalse();
+    setTask({title,Desc,date:(pElem.current.innerText),id:uuidv4()});
+    ClearEditArray();
   }
 
   const handleChangeInput = (e) => {
@@ -75,7 +81,9 @@ function AddTask() {
     EditFalse();
   }
   return (
-    <FromDiv>
+    
+    <>
+      <FromDiv>
       <Form onSubmit={handleSubmit}>
         <Lable htmlFor="title">title:</Lable>
         <Input
@@ -85,6 +93,7 @@ function AddTask() {
         id="title"
         placeholder="Add title"
         value={isEdit?EditTask[0].title:title}
+        required
         onChange={(e)=>handleChangeInput(e)}/>
 
         <Lable htmlFor="Desc">Desc:</Lable>
@@ -95,6 +104,7 @@ function AddTask() {
         cols="40"
         placeholder='Description..'
         value={isEdit?EditTask[0].Desc:Desc}
+        required
         onChange={(e)=>handleChangeTextArea(e)}>
         </Textarea>
 
@@ -110,11 +120,16 @@ function AddTask() {
           <P ref={pElem}>{date.toString().substring(0,15)}</P>
         </div>
         <button 
-        type="submit"
+        type="button"
+        // disabled = {!title || !Desc?true:false}
+        required
         className='btn1 btn2'>
         Add</button>
       </Form>
     </FromDiv>
+    {/* <Portal/> */}
+    {/* {submit  && <Portal />} */}
+    </>
   )
 }
 

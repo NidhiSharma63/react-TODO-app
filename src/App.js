@@ -5,6 +5,8 @@ import MainPage from './components/MainPage';
 import useStore from './store';
 import { BrowserRouter as Router,Routes, Route, NavLink, Link } from 'react-router-dom'
 import { useEffect } from 'react';
+import ReactDOM from "react-dom";
+import Portal from './components/Portal';
 
 
 // change the min width to max width
@@ -25,6 +27,10 @@ function App() {
           name!==''?<MainPage />:<WelcomePage /> 
         }
         </MainContainer>
+        
+     {
+       ReactDOM.createPortal(<Portal />, document.getElementById('portal'))
+     }
       </Router>
   );
 }

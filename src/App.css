@@ -27,6 +27,13 @@ input{
     list-style: none;
     text-decoration: none;
 }
+#portal{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    border: 2px solid;
+    height: 100%;
+}
 .btn1{
     padding: .5rem 4rem;
     font-size: 3rem;
