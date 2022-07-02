@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useStore from '../store';
 import styled from "styled-components";
 import {AiOutlineDelete} from 'react-icons/ai';
@@ -43,6 +43,12 @@ function RenderTask() {
     editTaskFun(item);
     IsAddedTrue();
   }
+
+  // console.log(task);
+  // useEffect(() => {
+  //   localStorage.setItem('task', JSON.stringify(task));
+  //   console.log(localStorage.getItem('task'));
+  // }, [task]);
 
   return (
     <>

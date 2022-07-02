@@ -1,4 +1,4 @@
-import React,{useRef,useState} from 'react';
+import React,{useEffect} from 'react';
 import styled from "styled-components";
 import useStore from '../store';
 import AddTask from './AddTask';
@@ -60,7 +60,15 @@ export default function MainPage() {
     isEdit
   } = useStore();
 
-  
+  // useEffect(() => {
+    // if(JSON.parse(localStorage.getItem('task'))!=[]){
+    //   console.log('not blank')
+    // }
+    // localStorage.setItem('task', JSON.stringify(task));
+  //   console.log(localStorage.getItem('task'));
+  //   console.log( JSON.parse(localStorage.getItem('task')).length);
+  // }, [task]);
+
   const HaveNoTask = () => {
       return(
         <Col1 className='common-flex'>

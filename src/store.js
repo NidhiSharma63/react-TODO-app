@@ -1,12 +1,14 @@
 import create from 'zustand';
 import { devtools } from "zustand/middleware";
 
-function set_state(state, task) {
-  return {
-    task: [task,...state.task,],
-  }
+function set_state(state, newTask) {
+    if(JSON.parse(localStorage.getItem('task'))!=null){
+      state.task = JSON.parse(localStorage.getItem('task'));
+    }
+    state.task.push(newTask);
+    localStorage.setItem('task', JSON.stringify(state.task));
+    return;
 };
-
 
 function handle_Edit(state, item) {
   state.EditTask.push(item);
@@ -30,7 +32,7 @@ const useStore = create(
 
       setUserName: name => set(state => ({ userName: name })),
 
-      setTask: task => set(state => set_state(state, task)),
+      setTask: newTask => set(state => set_state(state, newTask)),
 
       deleteTask: (id) => set(state => ({
         task: state.task.filter(t => t.id !== id)

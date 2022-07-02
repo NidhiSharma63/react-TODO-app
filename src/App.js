@@ -11,10 +11,8 @@ const MainContainer = styled.div`
   position: relative;
   height: 90vh;
 `
-
 function App() {
   const name = useStore(state => state.userName);
-  console.log(name);
   return (
       <Router>
         <MainContainer className='handleWidth'>
