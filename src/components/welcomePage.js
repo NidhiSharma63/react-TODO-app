@@ -41,7 +41,7 @@ function WelcomePage() {
   }
   useEffect(() => {
     if(JSON.parse(localStorage.getItem('userName'))!=null){
-    setUserName(localStorage.getItem('userName'));
+    setUserName(JSON.parse(localStorage.getItem('userName')));
     }
   }, []);
 
